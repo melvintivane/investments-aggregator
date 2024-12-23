@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: docker.io/library/mysql:latest
+    ports:
+      - "3307:3306"
+    expose:
+      - "3307"
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=123
+      - MYSQL_DATABASE=investments_db
+      - MYSQL_ROOT_PASSWORD=123
