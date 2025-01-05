@@ -3,7 +3,7 @@ package tech.melvin.agregadorinvestimentos.service;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import tech.melvin.agregadorinvestimentos.dto.CreateUserDTO;
+import tech.melvin.agregadorinvestimentos.dto.UserCreateDTO;
 import tech.melvin.agregadorinvestimentos.dto.UserResponseDTO;
 import tech.melvin.agregadorinvestimentos.dto.UserUpdateDTO;
 import tech.melvin.agregadorinvestimentos.entity.User;
@@ -21,27 +21,35 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(CreateUserDTO createUserDTO) {
+    public User createUser(UserCreateDTO userCreateDTO) {
         User user = new User();
-        var userExists = userRepository.findByEmail(createUserDTO.email());
+        var userExists = userRepository.findByEmail(userCreateDTO.email());
 
-        if (!isValidEmail(createUserDTO.email())) {
+        if (!isValidEmail(userCreateDTO.email())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email is not valid!");
         }
 
         if (userExists != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already in use!");
+             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already in use!");
         }
 
-        user.setUsername(createUserDTO.username());
-        user.setPassword(createUserDTO.password());
-        user.setEmail(createUserDTO.email());
+        user.setUsername(userCreateDTO.username());
+        user.setPassword(userCreateDTO.password());
+        user.setEmail(userCreateDTO.email());
 
         return userRepository.save(user);
     }
 
-    public Optional<User> getUserById(String userId) {
-        Optional<User> user = userRepository.findById(UUID.fromString(userId));
+    public Optional<UserResponseDTO> getUserById(String userId) {
+        Optional<UserResponseDTO> user = userRepository
+             .findById(UUID.fromString(userId))
+             .map(res -> new UserResponseDTO(
+                  res.getUserId(),
+                  res.getUsername(),
+                  res.getEmail(),
+                  res.getCreationTimestamp(),
+                  res.getUpdateTimestamp())
+             );
 
         if (user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found.");
