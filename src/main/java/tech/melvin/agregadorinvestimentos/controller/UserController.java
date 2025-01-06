@@ -2,7 +2,7 @@ package tech.melvin.agregadorinvestimentos.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.melvin.agregadorinvestimentos.dto.CreateUserDTO;
+import tech.melvin.agregadorinvestimentos.dto.UserCreateDTO;
 import tech.melvin.agregadorinvestimentos.dto.UserResponseDTO;
 import tech.melvin.agregadorinvestimentos.dto.UserUpdateDTO;
 import tech.melvin.agregadorinvestimentos.entity.User;
@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody CreateUserDTO createUserDTO) {
-        var user = userService.createUser(createUserDTO);
+    public ResponseEntity<User> createUser(@RequestBody UserCreateDTO userCreateDTO) {
+        var user = userService.createUser(userCreateDTO);
 
         return ResponseEntity.created(URI.create("/users/" + user.getUserId().toString())).build();
     }
@@ -36,8 +36,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> getUser(@PathVariable("id") String userId) {
-        Optional<User> user = userService.getUserById(userId);
+    public ResponseEntity<Optional<UserResponseDTO>> getUser(@PathVariable("id") String userId) {
+        Optional<UserResponseDTO> user = userService.getUserById(userId);
 
         return ResponseEntity.ok().body(user);
     }
