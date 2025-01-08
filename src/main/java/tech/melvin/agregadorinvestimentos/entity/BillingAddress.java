@@ -2,10 +2,11 @@ package tech.melvin.agregadorinvestimentos.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_billing_address")
+@Table(name = "tb_billingaddress")
 public class BillingAddress {
 
    @Id
@@ -23,11 +24,15 @@ public class BillingAddress {
    @Column(name = "number")
    private Integer number;
 
+   @Version
+   private Long version;
+
    public BillingAddress() {
    }
 
-   public BillingAddress(UUID accountId, String street, Integer number) {
+   public BillingAddress(UUID accountId, Account account, String street, Integer number) {
       this.accountId = accountId;
+      this.account = account;
       this.street = street;
       this.number = number;
    }
@@ -54,5 +59,18 @@ public class BillingAddress {
 
    public void setNumber(Integer number) {
       this.number = number;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      BillingAddress that = (BillingAddress) o;
+      return Objects.equals(accountId, that.accountId) && Objects.equals(account, that.account) && Objects.equals(street, that.street) && Objects.equals(number, that.number);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(accountId, account, street, number);
    }
 }
