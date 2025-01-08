@@ -13,12 +13,12 @@ public class AccountStockId {
    private UUID accountId;
 
    @Column(name = "stock_id")
-   private UUID stockId;
+   private String stockId;
 
    public AccountStockId() {
    }
 
-   public AccountStockId(UUID accountId, UUID stockId) {
+   public AccountStockId(UUID accountId, String stockId) {
       this.accountId = accountId;
       this.stockId = stockId;
    }
@@ -31,11 +31,11 @@ public class AccountStockId {
       this.accountId = accountId;
    }
 
-   public UUID getStockId() {
+   public String getStockId() {
       return stockId;
    }
 
-   public void setStockId(UUID stockId) {
+   public void setStockId(String stockId) {
       this.stockId = stockId;
    }
 
