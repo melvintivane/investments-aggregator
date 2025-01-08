@@ -2,6 +2,8 @@ package tech.melvin.agregadorinvestimentos.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "tb_accountstocks")
 public class AccountStock {
@@ -10,13 +12,13 @@ public class AccountStock {
    private AccountStockId accountStockId;
 
    @ManyToOne
-   @MapsId("accountId")
    @JoinColumn(name = "account_id")
+   @MapsId("accountId")
    private Account account;
 
    @ManyToOne
-   @MapsId("stockId")
    @JoinColumn(name = "stock_id")
+   @MapsId("stockId")
    private Stock stock;
 
    @Column(name = "quantity")
@@ -62,5 +64,18 @@ public class AccountStock {
 
    public void setQuantity(int quantity) {
       this.quantity = quantity;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      AccountStock that = (AccountStock) o;
+      return quantity == that.quantity && Objects.equals(accountStockId, that.accountStockId) && Objects.equals(account, that.account) && Objects.equals(stock, that.stock);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(accountStockId, account, stock, quantity);
    }
 }
