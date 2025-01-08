@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -12,28 +13,24 @@ public class Stock {
 
    @Id
    @Column(name = "stock_id")
-   private UUID stockId;
+   private String stockId;
 
    @Column(name = "description")
    private String description;
 
-   @Column(name = "ticker")
-   private String ticker;
-
    public Stock() {
    }
 
-   public Stock(UUID stockId, String description, String ticker) {
+   public Stock(String stockId, String description) {
       this.stockId = stockId;
       this.description = description;
-      this.ticker = ticker;
    }
 
-   public UUID getId() {
+   public String getId() {
       return stockId;
    }
 
-   public void setId(UUID stockId) {
+   public void setId(String stockId) {
       this.stockId = stockId;
    }
 
@@ -45,11 +42,16 @@ public class Stock {
       this.description = description;
    }
 
-   public String getTicker() {
-      return ticker;
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Stock stock = (Stock) o;
+      return Objects.equals(stockId, stock.stockId) && Objects.equals(description, stock.description);
    }
 
-   public void setTicker(String ticker) {
-      this.ticker = ticker;
+   @Override
+   public int hashCode() {
+      return Objects.hash(stockId, description);
    }
 }
