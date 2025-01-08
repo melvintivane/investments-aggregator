@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -32,8 +33,17 @@ public class Account {
    public Account() {
    }
 
-   public Account(UUID accountId, String description, List<AccountStock> accountStocks) {
+   public Account(UUID accountId, User user, BillingAddress billingAddress, String description, List<AccountStock> accountStocks) {
       this.accountId = accountId;
+      this.user = user;
+      this.billingAddress = billingAddress;
+      this.description = description;
+      this.accountStocks = accountStocks;
+   }
+
+   public Account(User user, BillingAddress billingAddress, String description, List<AccountStock> accountStocks) {
+      this.user = user;
+      this.billingAddress = billingAddress;
       this.description = description;
       this.accountStocks = accountStocks;
    }
@@ -60,5 +70,18 @@ public class Account {
 
    public void setDescription(String description) {
       this.description = description;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Account account = (Account) o;
+      return Objects.equals(accountId, account.accountId) && Objects.equals(user, account.user) && Objects.equals(billingAddress, account.billingAddress) && Objects.equals(description, account.description) && Objects.equals(accountStocks, account.accountStocks);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(accountId, user, billingAddress, description, accountStocks);
    }
 }
