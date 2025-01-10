@@ -36,8 +36,21 @@ docker-compose up
 
 4. Create account in [Brapi](https://brapi.dev/dashboard)
 5. Generate TOKEN in Brapi
-> Your token must be kept in secret, so is not a good idea to write it anywhere.
+> Generate a Brapi Token from your dashboard. Ensure you keep this token secure and do not expose it in your codebase.
 6. Add Brapi TOKEN to Environment Variables in IntelliJ
+- Open your project in IntelliJ.
+
+- Go to Run > Edit Configurations.
+
+- Select the appropriate configuration.
+
+- Add the following environment variable:
+
+```bash
+BRAPI_TOKEN=your_generated_token_here
+```
+> SEE THE ILLUSTRATION BELLOW
+
 ![one](/assets/one.png)
 ![two](/assets/two.png)
 ![three](/assets/three.png)
