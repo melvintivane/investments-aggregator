@@ -1,4 +1,4 @@
 package tech.melvin.agregadorinvestimentos.dto;
 
-public class AccountStockResponseDTO {
+public record AccountStockResponseDTO(String stockId, int quantity, double total) {
 }

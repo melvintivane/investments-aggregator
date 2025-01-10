@@ -1,4 +1,4 @@
 package tech.melvin.agregadorinvestimentos.dto;
 
-public record AccountResponseDTO() {
+public record AccountResponseDTO(String accountId, String description) {
 }

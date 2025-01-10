@@ -1,4 +1,6 @@
 package tech.melvin.agregadorinvestimentos.dto;
 
-public record BrapiResponseDTO() {
+import java.util.List;
+
+public record BrapiResponseDTO(List<StockDTO> results) {
 }

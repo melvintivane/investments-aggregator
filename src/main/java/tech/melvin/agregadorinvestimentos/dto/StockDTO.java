@@ -1,4 +1,4 @@
 package tech.melvin.agregadorinvestimentos.dto;
 
-public record StockDTO() {
+public record StockDTO(double regularMarketPrice) {
 }
