@@ -3,7 +3,6 @@ package tech.melvin.agregadorinvestimentos.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.melvin.agregadorinvestimentos.dto.*;
-import tech.melvin.agregadorinvestimentos.entity.Account;
 import tech.melvin.agregadorinvestimentos.entity.User;
 import tech.melvin.agregadorinvestimentos.service.UserService;
 
