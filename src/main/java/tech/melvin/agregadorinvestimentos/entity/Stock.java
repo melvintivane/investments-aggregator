@@ -26,7 +26,7 @@ public class Stock {
       this.description = description;
    }
 
-   public String getId() {
+   public String getStockId() {
       return stockId;
    }
 
