@@ -17,27 +17,35 @@ The Investment Aggregator API is a backend application designed to manage users,
 
 
 ## Getting Started
-1. Clone the project
+### 1. Clone the project
+
+To start, clone the repository to your local environment:
 ```bash
 git clone https://github.com/melvintivane/investment_aggregator.git
 ```
 
-2. Select the folder containing the project
+### 2. Navigate to the Project Directory
+
+Change to the project directory:
 ```bash
 cd /investments_agregator
 ```
 
-3. Build the docker image
+### 3. Set Up Docker Containers
+
+Build and run the Docker containers for the application and database:
 ```bash
 cd /docker
 
 docker-compose up
 ```
 
-4. Create account in [Brapi](https://brapi.dev/dashboard)
-5. Generate TOKEN in Brapi
+### 4. Create a Brapi Account
+
+Register for an account at [Brapi](https://brapi.dev/dashboard)
+### 5. Generate a Brapi TOKEN
 > Generate a Brapi Token from your dashboard. Ensure you keep this token secure and do not expose it in your codebase.
-6. Add Brapi TOKEN to Environment Variables in IntelliJ
+### 6. Add Brapi TOKEN to Environment Variables in IntelliJ
 - Open your project in IntelliJ.
 
 - Go to Run > Edit Configurations.
@@ -57,7 +65,7 @@ BRAPI_TOKEN=your_generated_token_here
 ![four](/assets/four.png)
 ![five](/assets/five.png)
 
-7.Start the Application
+### 7.Start the Application
 
 Run the application from IntelliJ or using the following Maven command:
 
