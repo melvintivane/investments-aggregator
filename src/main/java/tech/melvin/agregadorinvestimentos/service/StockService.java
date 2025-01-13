@@ -14,6 +14,7 @@ public class StockService {
    }
 
    public Stock createStock(CreateStockDTO stockDTO) {
+
       var stock = new Stock(
            stockDTO.stockId(),
            stockDTO.description()

@@ -32,6 +32,7 @@ public class UserService {
     }
 
     public User createUser(UserCreateDTO userCreateDTO) {
+
         User user = new User();
         var userExists = userRepository.findByEmail(userCreateDTO.email());
 
@@ -51,6 +52,7 @@ public class UserService {
     }
 
     public Optional<UserResponseDTO> getUserById(String userId) {
+
         Optional<UserResponseDTO> user = userRepository
              .findById(UUID.fromString(userId))
              .map(res -> new UserResponseDTO(
@@ -69,6 +71,7 @@ public class UserService {
     }
 
     public List<UserResponseDTO> getAllUsers() {
+
         return userRepository.findAll()
              .stream()
              .map(user -> new UserResponseDTO(
@@ -82,6 +85,7 @@ public class UserService {
     }
 
     public void updateUser(String userId, UserUpdateDTO userUpdateDTO) {
+
         var id = UUID.fromString(userId);
         var userEntity = userRepository.findById(id);
 
@@ -103,6 +107,7 @@ public class UserService {
     }
 
     public void deleteById(String userId) {
+
         var id = UUID.fromString(userId);
 
         var userExists = userRepository.existsById(id);
@@ -144,6 +149,7 @@ public class UserService {
     }
 
     public List<Account> findAccounts(String userId) {
+
         var user = userRepository.findById(UUID.fromString(userId))
              .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found."));
 
@@ -151,6 +157,7 @@ public class UserService {
     }
 
     private boolean isValidEmail(String email) {
+
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         return email.matches(emailRegex);
     }
