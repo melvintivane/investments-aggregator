@@ -59,11 +59,13 @@ BRAPI_TOKEN=your_generated_token_here
 ```
 > SEE THE ILLUSTRATION BELLOW
 
-![one](/assets/one.png)
-![two](/assets/two.png)
-![three](/assets/three.png)
-![four](/assets/four.png)
-![five](/assets/five.png)
+<div align="center" width="100%">
+    <img width="87%" src="/assets/one.png">
+    <img width="87%" src="/assets/two.png">
+    <img width="87%" src="/assets/three.png">
+    <img width="87%" src="/assets/four.png">
+    <img width="87%" src="/assets/five.png">
+</div>
 
 ### 7.Start the Application
 
