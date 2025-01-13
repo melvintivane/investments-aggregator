@@ -60,11 +60,11 @@ BRAPI_TOKEN=your_generated_token_here
 > SEE THE ILLUSTRATION BELLOW
 
 <div align="center" width="100%">
-    <img width="87%" src="/assets/one.png">
-    <img width="87%" src="/assets/two.png">
-    <img width="87%" src="/assets/three.png">
-    <img width="87%" src="/assets/four.png">
-    <img width="87%" src="/assets/five.png">
+    <img width="87%" src="/assets/one.png" alt="Step one">
+    <img width="87%" src="/assets/two.png" alt="Step two">
+    <img width="87%" src="/assets/three.png" alt="Step three">
+    <img width="87%" src="/assets/four.png" alt="Step four">
+    <img width="87%" src="/assets/five.png" alt="Step five">
 </div>
 
 ### 7.Start the Application
