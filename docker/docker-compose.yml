@@ -1,12 +1,22 @@
 services:
-  mysql:
-    image: docker.io/library/mysql:latest
+  postgres:
+    image: postgres
+    container_name: postgres_investments
     ports:
-      - "3307:3306"
-    expose:
-      - "3307"
+      - "5433:5432"
     environment:
-      - MYSQL_USER=admin
-      - MYSQL_PASSWORD=123
-      - MYSQL_DATABASE=investments_db
-      - MYSQL_ROOT_PASSWORD=123
+      POSTGRES_DB: investments_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistência de dados
+    restart: unless-stopped  # Recuperação automática
+    networks:
+      - invest_network
+
+volumes:
+  postgres_data:  # Volume para dados do PostgreSQL
+
+networks:
+  invest_network:  # Rede isolada para os serviços
+
